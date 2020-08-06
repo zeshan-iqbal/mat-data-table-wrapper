@@ -1,5 +1,5 @@
 <div style="margin: 15px;">
-  <app-mat-data-table [data]="data" [columns]="columns" [sortRows]="sortRows" (onDrop)="hanldeRowSort($event)" ></app-mat-data-table>
+  <app-mat-data-table [data]="data" [columns]="columns" [sortRows]="sortRows" (onDrop)="hanldeRowSort($event[0], $event[1])" ></app-mat-data-table>
 </div>
 
 

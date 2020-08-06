@@ -10,7 +10,7 @@ import * as _ from 'lodash';
   styleUrls: ['./mat-data-table.component.scss']
 })
 export class MatDataTableComponent implements OnInit, OnChanges {
-  @Output() onDrop: EventEmitter<CdkDragDrop<string[]>> = new EventEmitter();
+  @Output() onDrop: EventEmitter<any> = new EventEmitter();
   @Input() columns: IDataTableColumn[];
   @Input() data: any[];
   @Input() pageSizeLimit: number = 0;
@@ -26,7 +26,7 @@ export class MatDataTableComponent implements OnInit, OnChanges {
       && !_.isNil(changes.data)
       && changes.data.firstChange === false
       && !_.isNil(changes.data.currentValue)) {
-      this.dataSource.data =changes.data.currentValue;
+      this.dataSource.data = changes.data.currentValue;
     }
   }
 
@@ -36,20 +36,7 @@ export class MatDataTableComponent implements OnInit, OnChanges {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    // moveItemInArray(
-    //   event.container.data,
-    //   event.previousIndex,
-    //   event.currentIndex
-    // );
-    this.onDrop.emit(event);
-
-    // // updates moved data and table, but not dynamic if more dropzones
-//     let data = this.data;
-//     if(!_.isNil(this.rowSortMap)){
-// data = this.data.map(this.rowSortMap);
-//     }
-
-//     this.dataSource.data = data;
+    this.onDrop.emit([event.previousIndex, event.currentIndex]);
   }
 }
 

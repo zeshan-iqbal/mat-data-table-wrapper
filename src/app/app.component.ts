@@ -38,11 +38,11 @@ export class AppComponent {
     { ColumnDataPropName: "symbol", ColumnNameResouceKey: "Symbol", Width: 25 },
   ]
 
-  hanldeRowSort(event: CdkDragDrop<string[]>) {
+  hanldeRowSort(previousIndex, currentIndex) {
     moveItemInArray(
       this.data,
-      event.previousIndex,
-      event.currentIndex
+      previousIndex,
+      currentIndex
     );
     // updates moved data and table, but not dynamic if more dropzones
     const data = this.data.map((element, index) => {
