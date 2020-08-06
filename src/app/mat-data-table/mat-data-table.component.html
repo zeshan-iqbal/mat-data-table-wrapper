@@ -1,37 +1,49 @@
-<mat-table [dataSource]="dataSource" cdkDropList [cdkDropListData]="data" (cdkDropListDropped)="drop($event)" class="np-mat-data-table">
+<mat-table [dataSource]="dataSource" cdkDropList [cdkDropListData]="data" (cdkDropListDropped)="drop($event)"
+  class="np-mat-data-table">
 
-    <!-- Drag Indicator Column -->
-    <ng-container matColumnDef="sortRows" *ngIf="sortRows">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <mat-icon aria-hidden="false" aria-label="Example home icon">drag_indicator</mat-icon>
-      </mat-cell>
-    </ng-container>
+  <!-- Drag Indicator Column -->
+  <ng-container matColumnDef="sortRows" *ngIf="sortRows">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">drag_indicator</mat-icon>
+    </mat-cell>
+  </ng-container>
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-    </ng-container>
-  
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag></mat-row>
-  </mat-table>
+  <ng-container *ngFor="let column of internalColumns" matColumnDef="{{column.ColumnDataPropName}}">
+    <mat-header-cell *matHeaderCellDef> {{column.ColumnName}} </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <ng-container *ngIf="!column.Template">
+        {{value}}
+      </ng-container>
+      <ng-container *ngIf="column.Template">
+        <ng-template *ngTemplateOutlet="column.Template; context:{row: element}"></ng-template>
+      </ng-container>
+    </mat-cell>
+  </ng-container>
+  <!-- Position Column -->
+  <!-- <ng-container matColumnDef="position">
+    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+  </ng-container> -->
+
+  <!-- Name Column -->
+  <!-- <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+  </ng-container> -->
+
+  <!-- Weight Column -->
+  <!-- <ng-container matColumnDef="weight">
+    <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+  </ng-container> -->
+
+  <!-- Symbol Column -->
+  <!-- <ng-container matColumnDef="symbol">
+    <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+  </ng-container> -->
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag></mat-row>
+</mat-table>

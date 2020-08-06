@@ -1,5 +1,29 @@
 <div style="margin: 15px;">
-  <app-mat-data-table [data]="data" [columns]="columns" [sortRows]="sortRows" (onDrop)="hanldeRowSort($event[0], $event[1])" ></app-mat-data-table>
+  <app-mat-data-table [data]="data" [columns]="columns" [sortRows]="sortRows" (onDrop)="hanldeRowSort($event[0], $event[1])" >
+    <np-mat-column-template columnDataPropName="position">
+      <ng-template let-row="row" let-value="value">
+        {{ row.position }}
+      </ng-template>
+    </np-mat-column-template>
+
+    <np-mat-column-template columnDataPropName="name">
+      <ng-template let-row="row" let-value="value">
+        {{ row.name }}
+      </ng-template>
+    </np-mat-column-template>
+
+    <np-mat-column-template columnDataPropName="weight">
+      <ng-template let-row="row" let-value="value">
+        {{ row.weight }}
+      </ng-template>
+    </np-mat-column-template>
+
+    <np-mat-column-template columnDataPropName="symbol">
+      <ng-template let-row="row" let-value="value">
+        {{ row.symbol }}
+      </ng-template>
+    </np-mat-column-template>
+  </app-mat-data-table>
 </div>
 
 
