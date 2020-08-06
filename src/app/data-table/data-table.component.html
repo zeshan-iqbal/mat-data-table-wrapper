@@ -1,0 +1,24 @@
+<ngx-datatable 
+               class="material"
+               [loadingIndicator]="isLoading"
+               [columnMode]="'flex'"
+               [headerHeight]="50"
+               [footerHeight]="50"
+               [rowHeight]="'auto'"
+               [limit]="pageSizeLimit > 0 ? pageSizeLimit : undefined"
+               [rows]="data">
+  <ngx-datatable-column *ngFor="let column of internalColumns"
+                        [name]="column.ColumnName"
+                        [prop]="column.ColumnDataPropName"
+                        [sortable]="column.IsSortable"
+                        [flexGrow]="column.Width">
+    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+      <ng-container *ngIf="!column.Template">
+        {{value}}
+      </ng-container>
+      <ng-container *ngIf="column.Template">
+        <ng-template *ngTemplateOutlet="column.Template; context:{row: row, value: value}"></ng-template>
+      </ng-container>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>
