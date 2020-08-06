@@ -35,12 +35,7 @@ export class AppComponent {
     { ColumnDataPropName: "position", ColumnNameResouceKey: "Position", Width: 25 },
     { ColumnDataPropName: "name", ColumnNameResouceKey: "Name", Width: 25 },
     { ColumnDataPropName: "weight", ColumnNameResouceKey: "Weight", Width: 25 },
-    { ColumnDataPropName: "symbol", ColumnNameResouceKey: "Symbol", Width: 25 },
-    {
-      ColumnDataPropName: "Actions",
-      Width: 20,
-      IsSortable: false
-    }
+    { ColumnDataPropName: "symbol", ColumnNameResouceKey: "Symbol", Width: 25 }
   ]
 
   hanldeRowSort(previousIndex, currentIndex) {
