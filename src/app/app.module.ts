@@ -6,13 +6,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MatDataTableComponent } from './mat-data-table/mat-data-table.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { CustomTranslateModule } from './translate-module';
+import { ColumnTemplateComponent } from './data-table/template-components/column-template.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MatDataTableComponent,
-    DataTableComponent
+    DataTableComponent,
+    ColumnTemplateComponent
   ],
   imports: [
     BrowserModule,

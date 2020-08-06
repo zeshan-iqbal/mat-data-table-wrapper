@@ -1,5 +1,7 @@
+import { element } from 'protractor';
 import { IDataTableColumn } from './data-table/models/data-table-column.model';
 import { Component } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -35,4 +37,17 @@ export class AppComponent {
     { ColumnDataPropName: "weight", ColumnNameResouceKey: "Weight", Width: 25 },
     { ColumnDataPropName: "symbol", ColumnNameResouceKey: "Symbol", Width: 25 },
   ]
+
+  hanldeRowSort(event: CdkDragDrop<string[]>) {
+    moveItemInArray(
+      this.data,
+      event.previousIndex,
+      event.currentIndex
+    );
+    // updates moved data and table, but not dynamic if more dropzones
+    const data = this.data.map((element, index) => {
+      return { ...element, position: index + 1 };
+    });
+    this.data = [...data];
+  }
 }

@@ -1,4 +1,4 @@
-<mat-table [dataSource]="data" cdkDropList [cdkDropListData]="enabledRulesDs.data" (cdkDropListDropped)="drop($event)" class="np-mat-data-table">
+<mat-table [dataSource]="dataSource" cdkDropList [cdkDropListData]="data" (cdkDropListDropped)="drop($event)" class="np-mat-data-table">
 
     <!-- Drag Indicator Column -->
     <ng-container matColumnDef="sortRows" *ngIf="sortRows">
@@ -33,5 +33,5 @@
     </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag></mat-row>
   </mat-table>

@@ -1,6 +1,33 @@
 <div style="margin: 15px;">
-  <app-mat-data-table [data]="data" [columns]="columns" [sortRows]="sortRows"></app-mat-data-table>
+  <app-mat-data-table [data]="data" [columns]="columns" [sortRows]="sortRows" (onDrop)="hanldeRowSort($event)" ></app-mat-data-table>
 </div>
+
+
 <div style="margin: 15px;">
-  <np-data-table [data]="data" [columns]="columns"></np-data-table>
+  <np-data-table [data]="data" [columns]="columns">
+    <np-column-template columnDataPropName="position">
+      <ng-template let-row="row" let-value="value">
+        {{ row.position }}
+      </ng-template>
+    </np-column-template>
+
+    <np-column-template columnDataPropName="name">
+      <ng-template let-row="row" let-value="value">
+        {{ row.name }}
+      </ng-template>
+    </np-column-template>
+
+    <np-column-template columnDataPropName="weight">
+      <ng-template let-row="row" let-value="value">
+        {{ row.weight }}
+      </ng-template>
+    </np-column-template>
+
+    <np-column-template columnDataPropName="symbol">
+      <ng-template let-row="row" let-value="value">
+        {{ row.symbol }}
+      </ng-template>
+    </np-column-template>
+
+  </np-data-table>
 </div>
