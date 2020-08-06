@@ -20,7 +20,20 @@
 
     <np-mat-column-template columnDataPropName="symbol">
       <ng-template let-row="row" let-value="value">
-        {{ row.symbol }}
+        {{row.name}} - {{ row.symbol }}
+      </ng-template>
+    </np-mat-column-template>
+
+    <np-mat-column-template columnDataPropName="Actions">
+      <ng-template let-row="row">
+        <div class="button-row">
+          <button
+            mat-icon-button
+            color="primary"
+          >
+            <mat-icon aria-label="Edit item">edit</mat-icon>
+          </button>
+        </div>
       </ng-template>
     </np-mat-column-template>
   </app-mat-data-table>
@@ -52,6 +65,18 @@
         {{ row.symbol }}
       </ng-template>
     </np-column-template>
-
+    
+    <np-column-template columnDataPropName="Actions">
+      <ng-template let-row="row">
+        <div class="button-row">
+          <button
+            mat-icon-button
+            color="primary"
+          >
+            <mat-icon aria-label="Edit item">edit</mat-icon>
+          </button>
+        </div>
+      </ng-template>
+    </np-column-template>
   </np-data-table>
 </div>
